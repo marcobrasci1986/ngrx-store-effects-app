@@ -1,8 +1,13 @@
 export interface Employee {
+  id: number;
   firstName: string;
   lastName: string;
   age: number;
   type: Type
+}
+
+export interface FlattenedEmployee {
+  [id: number]: Employee;
 }
 
 
