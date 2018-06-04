@@ -11,6 +11,7 @@ import {Employee, Type} from "../model/employee.model";
 export class EmployeesComponent implements OnInit {
   name: string = "Marco";
   extractBoss: Employee;
+  workersAge: number;
   employees: Employee[] = [
     {
       firstName: "Mark",
@@ -33,19 +34,19 @@ export class EmployeesComponent implements OnInit {
     {
       firstName: "Jan",
       lastName: "Modaal",
-      age: 45,
+      age: 50,
       type: Type.WORKER
     },
     {
       firstName: "Eden",
       lastName: "Hazard",
-      age: 31,
+      age: 20,
       type: Type.WORKER
     },
     {
       firstName: "Stef",
       lastName: "Curry",
-      age: 34,
+      age: 20,
       type: Type.WORKER
     }
   ];
@@ -60,6 +61,7 @@ export class EmployeesComponent implements OnInit {
     console.log("Init employeesComponent");
 
     this.flattenBoss();
+    this.agesOfWorkers();
   }
 
   private flattenBoss() {
@@ -75,5 +77,15 @@ export class EmployeesComponent implements OnInit {
 
     }, {});
 
+  }
+
+  private agesOfWorkers() {
+    this.workersAge = this.employees.reduce((accumulator, employee) => {
+      if (employee.type === Type.WORKER) {
+        return accumulator + employee.age;
+      } else {
+        return accumulator;
+      }
+    }, 10)
   }
 }
