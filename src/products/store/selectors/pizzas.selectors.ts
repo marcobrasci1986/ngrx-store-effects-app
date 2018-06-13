@@ -7,6 +7,7 @@ import { createFeatureSelector, createSelector } from "@ngrx/store";
 
 import * as fromRoot from "../../../app/store";
 import * as fromPizzas from "../reducers/pizzas.reducer";
+import * as fromToppings from "./toppings.selectors";
 import * as fromFeature from "../reducers";
 import { Pizza } from "../../models/pizza.model";
 
@@ -34,6 +35,21 @@ export const getSelectedPizza = createSelector(
     return router.state && entities[router.state.params.pizzaId];
   }
 );
+
+export const getPizzaVisualized = createSelector(
+  getSelectedPizza,
+  fromToppings.getToppingEntities,
+  fromToppings.getSelectedToppings,
+  (selectedPizza, toppingsEntities, selectedToppings) => {
+    const toppings = selectedToppings.map(id => toppingsEntities[id]);
+
+    return {
+      ...selectedPizza,
+      toppings
+    };
+  }
+);
+
 // products.pizzas.loaded
 export const getPizzasLoaded = createSelector(
   getPizzaState,

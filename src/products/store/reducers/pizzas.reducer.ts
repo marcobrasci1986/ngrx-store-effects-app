@@ -1,4 +1,4 @@
-import {Pizza} from "../../models/pizza.model";
+import { Pizza } from "../../models/pizza.model";
 import * as fromPizzas from "../actions/pizzas.action";
 
 /**
@@ -28,19 +28,19 @@ export function reducer(
       };
     }
     case fromPizzas.LOAD_PIZZAS_SUCCESS: {
-      console.log('Load Pizzas Success');
+      console.log("Load Pizzas Success");
       const pizzas = action.payload;
 
       // flatten array to object structure
       const entities = pizzas.reduce(
-        (entities: { [id: number]: Pizza }, pizza: Pizza) => {
+        (accumulator: { [id: number]: Pizza }, pizza: Pizza) => {
           return {
-            ...entities,
+            ...accumulator,
             [pizza.id]: pizza
           };
         },
         {
-          ...state.entities
+          ...state.entities // initial state
         }
       );
       return {
@@ -55,6 +55,19 @@ export function reducer(
         ...state,
         loading: false,
         loaded: false
+      };
+    }
+
+    case fromPizzas.CREATE_PIZZA_SUCCESS: {
+      const pizza: Pizza = action.payload;
+      const entities = {
+        ...state.entities,
+        [pizza.id]: pizza
+      };
+
+      return {
+        ...state,
+        entities
       };
     }
   }

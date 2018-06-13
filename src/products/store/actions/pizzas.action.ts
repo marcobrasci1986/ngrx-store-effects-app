@@ -1,39 +1,63 @@
-import {Action} from "@ngrx/store";
-import {Pizza} from "../../models/pizza.model";
-
+import { Action } from "@ngrx/store";
+import { Pizza } from "../../models/pizza.model";
 
 /*
  * Action have two properties: type and optional payload
  * Reducers: switch on type
  */
 
-
 // load pizzas
 // namespace[Products] -> per feature module
 // communication via Events
-export const LOAD_PIZZAS = '[Products] Load Pizzas';
-export const LOAD_PIZZAS_FAIL = '[Products] Load Pizzas Fail';
-export const LOAD_PIZZAS_SUCCESS = '[Products] Load Pizzas Success';
+export const LOAD_PIZZAS = "[Products] Load Pizzas";
+export const LOAD_PIZZAS_FAIL = "[Products] Load Pizzas Fail";
+export const LOAD_PIZZAS_SUCCESS = "[Products] Load Pizzas Success";
 
 // Action Creators
 export class LoadPizzas implements Action {
   readonly type = LOAD_PIZZAS;
 }
 
-export class LoadPizzasSuccess implements Action {
-  readonly type = LOAD_PIZZAS_SUCCESS;
-
-  constructor(public payload: Pizza[]) {
-  }
-}
-
 export class LoadPizzasFail implements Action {
   readonly type = LOAD_PIZZAS_FAIL;
 
   //error message from server
-  constructor(private payload: any) {
-  }
+  constructor(private payload: any) {}
+}
+
+export class LoadPizzasSuccess implements Action {
+  readonly type = LOAD_PIZZAS_SUCCESS;
+
+  constructor(public payload: Pizza[]) {}
+}
+
+// create pizza
+
+export const CREATE_PIZZA = "[Products] Create Pizza";
+export const CREATE_PIZZA_FAIL = "[Products] Create Pizza Fail";
+export const CREATE_PIZZA_SUCCESS = "[Products] Create Pizza Success";
+
+export class CreatePizza implements Action {
+  readonly type = CREATE_PIZZA;
+
+  constructor(public payload: Pizza) {}
+}
+export class CreatePizzaFail implements Action {
+  readonly type = CREATE_PIZZA_FAIL;
+
+  constructor(public payload: any) {}
+}
+export class CreatePizzaSuccess implements Action {
+  readonly type = CREATE_PIZZA_SUCCESS;
+
+  constructor(public payload: Pizza) {}
 }
 
 // Action Types (used in switch in Reducer)
-export type PizzasAction = LoadPizzas | LoadPizzasFail | LoadPizzasSuccess
+export type PizzasAction =
+  | LoadPizzas
+  | LoadPizzasFail
+  | LoadPizzasSuccess
+  | CreatePizza
+  | CreatePizzaFail
+  | CreatePizzaSuccess;
