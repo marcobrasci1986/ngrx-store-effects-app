@@ -23,6 +23,7 @@ import { Topping } from '../../models/topping.model';
 @Component({
   selector: 'pizza-form',
   styleUrls: ['pizza-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="pizza-form">
       <form [formGroup]="form">

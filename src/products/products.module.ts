@@ -15,6 +15,7 @@ import * as fromGuards from "./guards";
 import { StoreModule } from "@ngrx/store";
 import { effects, reducers } from "./store";
 import { EffectsModule } from "@ngrx/effects";
+import { PizzaExistsGuard } from "./guards/pizza-exists.guard";
 
 // routes
 export const ROUTES: Routes = [
@@ -27,11 +28,12 @@ export const ROUTES: Routes = [
   {
     path: "new",
     component: fromContainers.ProductItemComponent,
-    canActivate: [fromGuards.PizzasGuard]
+    canActivate: [fromGuards.PizzasGuard, fromGuards.ToppingsGuard]
   },
   {
     path: ":pizzaId",
-    component: fromContainers.ProductItemComponent
+    component: fromContainers.ProductItemComponent,
+    canActivate: [fromGuards.PizzaExistsGuard, fromGuards.ToppingsGuard]
   }
 ];
 

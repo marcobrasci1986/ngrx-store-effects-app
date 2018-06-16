@@ -54,10 +54,6 @@
       "name": "Blazin' Inferno",
       "toppings": [
         {
-          "id": 10,
-          "name": "pepperoni"
-        },
-        {
           "id": 9,
           "name": "pepper"
         },
@@ -78,10 +74,6 @@
           "name": "bacon"
         },
         {
-          "id": 6,
-          "name": "mushroom"
-        },
-        {
           "id": 1,
           "name": "anchovy"
         }
@@ -92,12 +84,16 @@
       "name": "dsds",
       "toppings": [
         {
-          "id": 7,
-          "name": "olive"
+          "id": 2,
+          "name": "bacon"
         },
         {
-          "id": 3,
-          "name": "basil"
+          "id": 6,
+          "name": "mushroom"
+        },
+        {
+          "id": 10,
+          "name": "pepperoni"
         }
       ],
       "id": 3

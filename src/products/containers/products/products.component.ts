@@ -1,13 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, ViewContainerRef} from "@angular/core";
 
-import {Pizza} from '../../models/pizza.model';
-import *  as fromStore from '../../store';
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs/Observable";
+import { Pizza } from "../../models/pizza.model";
+import * as fromStore from "../../store";
+import { Store } from "@ngrx/store";
+import { Observable } from "rxjs/Observable";
+import { ToastsManager } from "ng2-toastr";
 
 @Component({
-  selector: 'products',
-  styleUrls: ['products.component.scss'],
+  selector: "products",
+  styleUrls: ["products.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="products">
       <div class="products__new">
@@ -27,16 +29,21 @@ import {Observable} from "rxjs/Observable";
         </pizza-item>
       </div>
     </div>
-  `,
+  `
 })
 export class ProductsComponent implements OnInit {
   pizzas$: Observable<Pizza[]>;
 
-  constructor(private store: Store<fromStore.ProductsState>) {
+  constructor(
+    private store: Store<fromStore.ProductsState>,
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef
+  ) {
+    this.toastr.setRootViewContainerRef(vcr);
   }
 
   ngOnInit() {
     this.pizzas$ = this.store.select(fromStore.getAllPizzas);
-    this.store.dispatch(new fromStore.LoadToppings());
+    this.toastr.success("You are awesome!", "Success!");
   }
 }

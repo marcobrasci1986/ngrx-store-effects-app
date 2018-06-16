@@ -30,6 +30,7 @@ export function reducer(
       };
     }
     case fromToppings.LOAD_TOPPINGS: {
+      console.log("Reducer:: LOAD_TOPPINGS");
       return {
         ...state,
         loading: true
@@ -52,8 +53,8 @@ export function reducer(
 
       return {
         ...state,
-        loading: true,
-        loaded: false,
+        loading: false,
+        loaded: true,
         entities
       };
     }

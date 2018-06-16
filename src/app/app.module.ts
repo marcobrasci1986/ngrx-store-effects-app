@@ -17,6 +17,7 @@ import { storeFreeze } from "ngrx-store-freeze";
 import { AppComponent } from "./containers/app/app.component";
 import { EmployeesComponent } from "../employees/components/employees.component";
 import { EmployeesModule } from "../employees/employee.module";
+import { ToastModule } from "ng2-toastr";
 
 // this would be done dynamically with webpack for builds
 const environment = {
@@ -44,6 +45,7 @@ export const ROUTES: Routes = [
 @NgModule({
   imports: [
     BrowserModule,
+    ToastModule.forRoot(),
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES),
     StoreModule.forRoot(reducers, { metaReducers }),
