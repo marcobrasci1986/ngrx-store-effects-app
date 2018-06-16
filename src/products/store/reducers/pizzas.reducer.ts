@@ -22,10 +22,7 @@ export function reducer(
 ): PizzaState {
   switch (action.type) {
     case fromPizzas.LOAD_PIZZAS: {
-      return {
-        ...state,
-        loading: true
-      };
+      return { ...state, loading: true };
     }
     case fromPizzas.LOAD_PIZZAS_SUCCESS: {
       console.log("Load Pizzas Success");
@@ -43,32 +40,26 @@ export function reducer(
           ...state.entities // initial state
         }
       );
-      return {
-        ...state,
-        loading: false,
-        loaded: true,
-        entities
-      };
+      return { ...state, loading: false, loaded: true, entities };
     }
     case fromPizzas.LOAD_PIZZAS_FAIL: {
-      return {
-        ...state,
-        loading: false,
-        loaded: false
-      };
+      return { ...state, loading: false, loaded: false };
     }
 
+    case fromPizzas.UPDATE_PIZZA_SUCCESS:
     case fromPizzas.CREATE_PIZZA_SUCCESS: {
       const pizza: Pizza = action.payload;
-      const entities = {
-        ...state.entities,
-        [pizza.id]: pizza
-      };
+      const entities = { ...state.entities, [pizza.id]: pizza };
 
-      return {
-        ...state,
-        entities
-      };
+      return { ...state, entities };
+    }
+    case fromPizzas.REMOVE_PIZZA_SUCCESS: {
+      const removedPizza: Pizza = action.payload;
+
+      // new ES6 trick: destructure entities. Remove a pizza by ID from the entities array
+      const { [removedPizza.id]: removed, ...entities } = state.entities;
+
+      return { ...state, entities };
     }
   }
 
