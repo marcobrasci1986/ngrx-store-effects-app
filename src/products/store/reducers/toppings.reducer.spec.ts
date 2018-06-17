@@ -67,7 +67,7 @@ describe("ToppingsReducer", () => {
   describe("VISUALISE_TOPPINGS action", () => {
     it("should set an array of number ids", () => {
       const { initialState } = fromToppings;
-      const action = new fromActions.VisualizeToppings([1, 5, 9]);
+      const action = new fromActions.VisualiseToppings([1, 5, 9]);
       const state = fromToppings.reducer(initialState, action);
 
       expect(state.selectedToppings).toEqual([1, 5, 9]);

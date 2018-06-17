@@ -43,7 +43,7 @@ describe("Toppings Actions", () => {
   describe("VisualiseToppings Actions", () => {
     describe("VisualiseToppings", () => {
       it("should create an action", () => {
-        const action = new fromToppings.VisualizeToppings([1, 2, 3]);
+        const action = new fromToppings.VisualiseToppings([1, 2, 3]);
         expect({ ...action }).toEqual({
           type: fromToppings.VISUALIZE_TOPPINGS,
           payload: [1, 2, 3]

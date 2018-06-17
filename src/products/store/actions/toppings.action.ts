@@ -24,7 +24,7 @@ export class LoadToppingsSuccess implements Action {
   constructor(public payload: Topping[]) {}
 }
 
-export class VisualizeToppings implements Action {
+export class VisualiseToppings implements Action {
   readonly type = VISUALIZE_TOPPINGS;
 
   constructor(public payload: number[]) {}
@@ -35,4 +35,4 @@ export type ToppingsAction =
   | LoadToppings
   | LoadToppingsFail
   | LoadToppingsSuccess
-  | VisualizeToppings;
+  | VisualiseToppings;
