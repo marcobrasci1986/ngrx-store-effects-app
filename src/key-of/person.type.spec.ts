@@ -1,4 +1,4 @@
-fdescribe("Keyof", () => {
+describe("Keyof", () => {
 
   it("should use keyof in real world example", function () {
     const person = {
