@@ -1,8 +1,7 @@
-import { Pizza } from "../products/models/pizza.model";
-import { Topping } from "../products/models/topping.model";
+import {Pizza} from "../products/models/pizza.model";
 
-fdescribe("SpreadOperator", () => {
-  it("it should add an object with spread operator in immutable way", function() {
+describe("SpreadOperator", () => {
+  it("it should add an object with spread operator in immutable way", function () {
     const pizzas: Pizza[] = [];
 
     pizzas.push(
@@ -57,7 +56,7 @@ fdescribe("SpreadOperator", () => {
       ]
     };
 
-    const { toppings } = pizzaToAdd;
+    const {toppings} = pizzaToAdd;
     expect(toppings.length).toBe(1);
     expect(toppings[0].id).toBe(3);
     expect(toppings[0].name).toBe("cheese");

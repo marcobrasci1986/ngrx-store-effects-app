@@ -14,7 +14,8 @@ export class PizzaExistsGuard implements CanActivate {
     return this.checkStore().pipe(
       switchMap(() => {
         const id = parseInt(route.params.pizzaId, 10);
-        return this.hasPizza(id);
+        let booleanObservable = this.hasPizza(id);
+        return booleanObservable;
       })
     );
   }

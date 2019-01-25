@@ -5,13 +5,16 @@ module.exports = config => {
     browsers: ['Chrome'],
     files: ['./node_modules/es6-shim/es6-shim.min.js', 'karma.entry.js'],
     frameworks: ['jasmine'],
-    mime: { 'text/x-typescript': ['ts'] },
+    mime: {'text/x-typescript': ['ts']},
     preprocessors: {
       'karma.entry.js': ['webpack', 'sourcemap'],
       '*.js': ['sourcemap'],
       '**/*.spec.ts': ['sourcemap', 'webpack'],
     },
     reporters: ['spec'],
+    specReporter: {
+      suppressSkipped: true
+    },
     webpack: {
       context: __dirname,
       devtool: 'sourcemap',

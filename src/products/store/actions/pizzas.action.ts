@@ -22,7 +22,9 @@ export class LoadPizzasFail implements Action {
   readonly type = LOAD_PIZZAS_FAIL;
 
   //error message from server
-  constructor(public payload: any) {}
+  constructor(public payload: any) {
+
+  }
 }
 
 export class LoadPizzasSuccess implements Action {
